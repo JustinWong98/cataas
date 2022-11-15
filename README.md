@@ -1,70 +1,11 @@
-# Getting Started with Create React App
+For this simple project to help users generate a cataas url given their preferences, given that we already have an API provided to consume data, I figured that a simple Frontend-only static webpage would suffice- since we do not need any data other than what the user wants for their cat image.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I used React as the frontend framework - to generate a Single Page App that is responsive and thus can run on both mobile and desktop devices. There is no need for multiple pages or routing due to the simple nature of the application. I made the form in a multi-step format as that does not overload the user with too many options at a single time - together with a progress bar that shows them exactly which step they are at.
 
-## Available Scripts
+I used Material UI for styling as well as for the components it provides - making some manual adjustments along the way.
 
-In the project directory, you can run:
+Formik was used to help with the validation of user input - namely for the height and width, which are capped at 1000px each and can't be a negative number. I also added an extra layer of validation for what the user wishes for the cat to say (either it is a string or null).
 
-### `npm start`
+Given that the same URL provided will most likely lead to a different cat picture the more general the specifications are, I elected to just provide the user with a URL for them to visit and/or copy. I decided to give the user a preview of what their cat image might look like within the SPA when they generate their URL.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I think building a responsive Web Application would be most suitable for this as being platform agnostic serves the general purpose of this app the best. A large portion of those who might be looking to generate and send a cat image would probably be doing it on their mobile devices (so that they can send it over a chat group, for example), so not having a responsive Web App would be counterintuitive. Given the scale, a full-blown React Native application would probably be considered 'overkill', and users might not want to download an application for such a specific purpose and can be done simply by visiting a URL on their mobile browser instead - and some people might be using a laptop or desktop device.
