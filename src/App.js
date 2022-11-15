@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { ThemeProvider } from "@emotion/react";
+import { CssBaseline, createTheme } from "@mui/material";
+
+import Navbar from "./components/navbar/Navbar";
+import Homepage from "./components/Homepage/Homepage";
+import InputForm from "./components/input/Input";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#6fbf73",
+    },
+  },
+  typography: {
+    allVariants: {
+      color: "#6fbf73",
+      paddingBottom: "2%",
+      paddingTop: "2%",
+    },
+  },
+  stepper: {
+    "& .Mui-completed": { color: "#6fbf7b" },
+    "& .MuiSvgIcon-root": { color: "#4caf50" },
+    "& .Mui-active": { color: "#4caf50" },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <InputForm />
+      </div>
+    </ThemeProvider>
   );
 }
 
