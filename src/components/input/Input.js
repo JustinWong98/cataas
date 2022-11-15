@@ -16,7 +16,7 @@ import {
   Zoom,
 } from "@mui/material";
 import { Field, Form, Formik, useFormik } from "formik";
-import { CheckboxWithLabel, TextField, Select } from "formik-material-ui";
+import { CheckboxWithLabel } from "formik-material-ui";
 import { object, number, string } from "yup";
 
 import CustomTextField from "../Custom/CustomTextField";
@@ -53,7 +53,7 @@ const InputForm = () => {
 
   const constructUrl = (formValues) => {
     let outputURL = "https://cataas.com/cat";
-
+    console.log(formValues);
     if (formValues.gif) {
       outputURL += "/gif";
     }
@@ -385,7 +385,7 @@ export const FormikStepper = ({ children, ...props }) => {
                 sx={{
                   "& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel":
                     {
-                      color: "#52af4c", // Just text label (COMPLETED)
+                      color: "#52af4c",
                     },
                   "& .MuiSvgIcon-root": { color: "#4caf50" },
                   "& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel":
