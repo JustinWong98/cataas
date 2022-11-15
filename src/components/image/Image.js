@@ -1,24 +1,39 @@
-import { useState, useRef, useEffect } from "react";
-import { Box, Button, Link, Typography } from "@mui/material";
+import { useState } from "react";
+import {
+  Box,
+  Button,
+  Link,
+  Typography,
+  Dialog,
+  CircularProgress,
+} from "@mui/material";
 import axios from "axios";
 
 function Image({ imageURL }) {
-  // since the cat image generated is random - we need to provide a way for the user to save an image
-  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [copyMessage, setCopyMessage] = useState("");
+  const [open, setOpen] = useState(false);
+
+  // trick to generate a new cat image every time button is clicked
+  async function fetchImage(imageURL) {
+    setLoading(true);
+    await axios.get(imageURL);
+    setLoading(false);
+  }
+
+  const handleClickOpen = async () => {
+    await fetchImage(imageURL);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(imageURL);
     setCopyMessage("Copied to Clipboard!");
   };
-  useEffect(() => {
-    async function fetchImage() {
-      const imageResult = await axios.get(imageURL);
-      console.log(imageResult);
-      setImage(imageResult);
-    }
-    fetchImage();
-  }, [imageURL]);
 
   return (
     <Box
@@ -31,8 +46,25 @@ function Image({ imageURL }) {
     >
       {imageURL && (
         <>
-          <Typography> Sample Image</Typography>
-          <img src={imageURL} width="40%" height="40%" />
+          {!loading ? (
+            <>
+              <Button
+                onClick={handleClickOpen}
+                variant="contained"
+                sx={{
+                  marginBottom: "2vh",
+                  marginTop: "2vh",
+                }}
+              >
+                Sample Image
+              </Button>
+              <Dialog onClose={handleClose} open={open}>
+                <img src={imageURL} alt="sample cat" />
+              </Dialog>
+            </>
+          ) : (
+            <CircularProgress />
+          )}
           <Typography>
             Your image URL:{" "}
             <Link href={imageURL} target="_blank" rel="noreferrer noopener">

@@ -1,10 +1,5 @@
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import { ThemeProvider } from "@emotion/react";
-import { CssBaseline, createTheme } from "@mui/material";
-
-import Navbar from "./components/navbar/Navbar";
-import Homepage from "./components/Homepage/Homepage";
+import { createTheme } from "@mui/material";
 import InputForm from "./components/input/Input";
 
 const theme = createTheme({

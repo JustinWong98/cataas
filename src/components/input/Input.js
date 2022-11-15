@@ -24,10 +24,6 @@ import CustomSelect from "../Custom/CustomSelect";
 import Image from "../image/Image";
 
 const InputForm = () => {
-  // add color
-  // center everything
-  // make sure its responsive
-  // add progress bar (watch bruno yt vid)
   useEffect(() => {
     async function fetchTags() {
       const tags = await axios.get("https://cataas.com/api/tags");
@@ -57,7 +53,7 @@ const InputForm = () => {
 
   const constructUrl = (formValues) => {
     let outputURL = "https://cataas.com/cat";
-    console.log(formValues);
+
     if (formValues.gif) {
       outputURL += "/gif";
     }
@@ -79,7 +75,6 @@ const InputForm = () => {
     } else if (heightOrWidth === "width" && Number(formValues.width) > 0) {
       outputURL += `?width=${formValues.width}`;
     }
-    console.log(outputURL);
     setImageURL(outputURL);
   };
 
@@ -96,7 +91,7 @@ const InputForm = () => {
           backgroundImage: `linear-gradient(
                     rgba(0, 0, 0, 0.8), 
                     rgba(0, 0, 0, 0.8)
-                  ),url(https://cataas.com/cat?height=1000&width=1000)`,
+                  ),url(https://cataas.com/cat)`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
